@@ -20,7 +20,7 @@ fn normalize(license_string: &str) -> String {
 
 fn get_proc_macro_node_names(metadata: &Metadata, opt: &GetDependenciesOpt) -> HashSet<String> {
     let mut proc_macros = HashSet::new();
-    if opt.avoid_proc_macros {
+    if !opt.avoid_proc_macros {
         for packages in &metadata.packages {
             for target in &packages.targets {
                 if target.crate_types.contains(&String::from("proc-macro")) {
