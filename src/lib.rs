@@ -11,10 +11,9 @@ use std::io;
 fn normalize(license_string: &str) -> String {
     let mut list: Vec<&str> = license_string
         .split('/')
-        .flat_map(|e| e.split(" OR "))
         .map(str::trim)
         .collect();
-    list.sort_unstable();
+    list.sort();
     list.dedup();
     list.join(" OR ")
 }
